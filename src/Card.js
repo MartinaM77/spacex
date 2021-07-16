@@ -1,11 +1,18 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { useHistory } from "react-router-dom";
 
 export default function Card(props) {
-  const { mission_name, details, launch_date_local } = props;
+  const { id, mission_name, details, launch_date_local } = props;
+  const history = useHistory();
+
+  const handleClick = () => history.push({
+    pathname: '/mission',
+    search: '?id='+id,
+  });
 
   return (
-    <div className='card'>
+    <div className='card' onClick={() => handleClick()}>
       <h3>{mission_name}</h3>
       <p>{details}</p>
       <p className='launchDate'>

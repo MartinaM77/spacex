@@ -31,11 +31,17 @@ body {
 }
 
 .card {
-  border: 1px solid rgba(0,0,0,0.2);
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
   padding: 20px;
-  margin: 20px 0;
+  margin: 30px 0;
   background-color: white;
+  transition: transform .3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: translate(10px, -10px);
+  -webkit-box-shadow: -10px 10px 0px 0px rgba(70, 77, 90, 0.7);
+  box-shadow: -10px 10px 0px 0px rgba(70, 77, 90, 0.7);
 }
 
 .launchDate {
