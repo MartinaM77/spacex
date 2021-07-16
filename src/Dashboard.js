@@ -1,13 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { useQuery, gql } from "@apollo/client";
 import Card from './Card.js';
 import ShuttleIcon from './shuttle.svg';
 
-const endPoint = 'https://api.spacex.land/graphql/';
-const queryClient = new QueryClient();
-const query = `
+const LAUNCHES_QUERY = gql`
 {
   launchesPast(limit: 10) {
     id
@@ -19,23 +16,7 @@ const query = `
 `;
 
 export default function Dashboard() {
-  return (
-    <QueryClientProvider client={queryClient} contextSharing={true}>
-      <WrappedDashboard/>
-    </QueryClientProvider>
-  );
-}
-
-function WrappedDashboard() {
-  const { data, isLoading, error } = useQuery('launches', () => {
-    return axios({
-      url: endPoint,
-      method: 'POST',
-      data: {
-        query: query
-      }
-    }).then(response => response.data.data);
-  });
+  const { data, loading, error } = useQuery(LAUNCHES_QUERY);
 
   if (error) return <div>{error.message}</div>;
 
@@ -52,7 +33,7 @@ function WrappedDashboard() {
           />
         </div>
       </Grid>
-      {isLoading ?
+      {loading ?
         <Grid item xs={8} className='loading-launches'>
           <div>Loading...</div>
         </Grid>
