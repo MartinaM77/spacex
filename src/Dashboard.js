@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import Card from './Card.js';
+import ShuttleIcon from './shuttle.svg';
 
 const endPoint = 'https://api.spacex.land/graphql/';
 const queryClient = new QueryClient();
@@ -37,15 +40,33 @@ function WrappedDashboard() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <div>
-      <h1>Last Launches</h1>
+    <Grid container spacing={0} justifyContent='center' className='dashboard'>
+      <Grid item xs={8}>
+        <h1 className='launch-title'>Last Launches</h1>
+        <div className='launch-icon'>
+          <img
+            src={ShuttleIcon}
+            alt='Shuttle Icon'
+            width='40px'
+            height='40px'
+          />
+        </div>
+      </Grid>
       {isLoading ?
-        <div>Loading...</div>
+        <Grid item xs={8} className='loading-launches'>
+          <div>Loading...</div>
+        </Grid>
         :
         data.launchesPast.map((launch) => (
-          <div key={launch.id}>{launch.mission_name}</div>
+          <Grid
+            item
+            xs={8}
+            key={launch.id}
+          >
+            <Card {...launch} />
+          </Grid>
         ))
       }
-    </div>
+    </Grid>
   );
 }

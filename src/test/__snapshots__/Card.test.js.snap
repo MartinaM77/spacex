@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render of Card matches snapshot 1`] = `
+<div
+  class="card"
+>
+  <h3>
+    Test Mission
+  </h3>
+  <p>
+    Test details of the mission
+  </p>
+  <p
+    class="launchDate"
+  >
+    <time
+      datetime="1626450120000"
+    >
+      16/07/2021
+    </time>
+  </p>
+</div>
+`;
