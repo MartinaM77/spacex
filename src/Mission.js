@@ -1,4 +1,5 @@
 import React from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import { useQuery, gql } from "@apollo/client";
 import { useHistory, useLocation } from 'react-router-dom';
@@ -50,12 +51,12 @@ export default function Mission() {
 
   if (error) return <div>{error.message}</div>;
   const launch = data ? data.launch : null;
-  
+
   return (
     <Grid container spacing={0} justifyContent='center' className='mission'>
       {loading || !launch ?
         <Grid item xs={8} className='loading-launches'>
-          <div>Loading...</div>
+          <CircularProgress />
         </Grid>
         :
         <Grid

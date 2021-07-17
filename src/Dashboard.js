@@ -1,10 +1,11 @@
 import React from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import { useQuery, gql } from "@apollo/client";
 import Card from './Card.js';
 import ShuttleIcon from './shuttle.svg';
 
-const LAUNCHES_QUERY = gql`
+export const LAUNCHES_QUERY = gql`
 {
   launchesPast(limit: 10) {
     id
@@ -21,6 +22,7 @@ export default function Dashboard() {
   if (error) return <div>{error.message}</div>;
 
   return (
+    <div className='dashboard-wrapper'>
     <Grid container spacing={0} justifyContent='center' className='dashboard'>
       <Grid item xs={8}>
         <h1 className='launch-title'>Last Launches</h1>
@@ -35,7 +37,7 @@ export default function Dashboard() {
       </Grid>
       {loading ?
         <Grid item xs={8} className='loading-launches'>
-          <div>Loading...</div>
+          <CircularProgress />
         </Grid>
         :
         data.launchesPast.map((launch) => (
@@ -49,5 +51,6 @@ export default function Dashboard() {
         ))
       }
     </Grid>
+    </div>
   );
 }

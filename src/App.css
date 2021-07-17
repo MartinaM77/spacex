@@ -22,7 +22,7 @@ body {
 }
 
 .loading-launches {
-  color: white;
+  text-align: center;
 }
 
 .launch-title, .launch-icon {
