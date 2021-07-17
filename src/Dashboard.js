@@ -2,6 +2,7 @@ import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import { useQuery, gql } from "@apollo/client";
+import Alert from './Alert.js';
 import Card from './Card.js';
 import ShuttleIcon from './shuttle.svg';
 
@@ -19,7 +20,7 @@ export const LAUNCHES_QUERY = gql`
 export default function Dashboard() {
   const { data, loading, error } = useQuery(LAUNCHES_QUERY);
 
-  if (error) return <div>{error.message}</div>;
+  if (error) return <Alert type={'Error'} description={error.message}/>;
 
   return (
     <div className='dashboard-wrapper'>

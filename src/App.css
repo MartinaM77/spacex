@@ -60,3 +60,18 @@ body {
 .mission {
   padding: 10vh 0;
 }
+
+/* Alert component */
+.alert {
+  margin: 50px;
+}
+
+.alert-box {
+  background-color: #f0c5c5;
+  border: 1px red solid;
+  padding: 20px;
+}
+
+.go-back {
+  padding: 20px 0;
+}
