@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# SpaceX Launches
+See 10 latest launches and more details about the selected launch.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run the application
 
-## Available Scripts
-
-In the project directory, you can run:
+Go to the project directory.
 
 ### `npm start`
+runs the application in the development mode.
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### `npm test`
+launches the tests.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App navigation
+Route /dashboard contains latest Launches.
 
-### `npm run build`
+Route /mission?id=105 contains detail information about the launch with id 105.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Built application is deployed on [http://spacex.michlo.sk](http://spacex.michlo.sk).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Used technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Core of this application is created by `create-react-app`
 
-### `npm run eject`
+Application uses **Material-ui** components for layout.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Application routes are handled by **React Router DOM**.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Data are fetched from SpaceX GraphQL API using **Apollo Client**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Testing is handled by **React Testing Library**.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Possible TODOs
 
-## Learn More
+* Transitions when displaying components.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Display all images in a slider for the selected launch
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Display all ship images for selected launch
