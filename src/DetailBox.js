@@ -37,43 +37,55 @@ export default function DetailBox(props) {
   } = props;
 
   const seeMoreLink =
-    links.article_link ? links.article_link
-    : links.video_link ? links.video_link
+    links ? links.article_link || links.video_link || null
     : null;
 
   return (
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image={links.flickr_images[0] ? links.flickr_images[0] : StarsImg}
+        image={
+          links
+          && links.flickr_images
+          && links.flickr_images[0] ? links.flickr_images[0]
+          : StarsImg
+        }
         title={mission_name}
       />
       <CardHeader
         title={mission_name}
         subheader={
           <div>
-            <Moment format='DD/MM/YYYY'>
-              {launch_date_local}
-            </Moment>
-            , {launch_site.site_name_long}
+            {launch_date_local &&
+              <Moment format='DD/MM/YYYY'>
+                {launch_date_local}
+              </Moment>
+            }
+            {launch_site &&
+              <span>, {launch_site.site_name_long}</span>
+            }
           </div>
         }
       />
       <CardContent>
-        <p>{details}</p>
-        <p>Rocket:
+        {details &&
+          <p>{details}</p>
+        }
+        {rocket &&
+          <p>Rocket:
           {rocket.rocket.wikipedia ?
             <a href={rocket.rocket.wikipedia}> {rocket.rocket_name}</a>
             : rocket.rocket_name
           }
-        </p>
-        {ships.length > 0 &&
+          </p>
+        }
+        {ships && ships.length > 0 &&
           <p> Ships:
             {ships.map((ship, index) => {
               return (
                 <span key={ship+index}>{index > 0 ? ', ' : ' '}
                 {ship.url ?
-                  <a href={ship.url}> {ship.name}</a>
+                  <a href={ship.url}>{ship.name}</a>
                   : ship.name
                 }
                 </span>
