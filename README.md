@@ -3,7 +3,16 @@ See 10 latest launches and more details about the selected launch.
 
 ## How to run the application
 
-Go to the project directory.
+Clone the **spacex** repository \
+`git clone https://github.com/MartinaM77/spacex.git`
+
+Go to the project directory \
+`cd spacex`
+
+Install needed dependencies.\
+`npm install`
+
+Now you are ready to start the application!
 
 ### `npm start`
 runs the application in the development mode.
